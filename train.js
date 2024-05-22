@@ -1,5 +1,5 @@
 // A TASK:
-//Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
+// Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
 // MASALAN countLetter("e", "engineer") 3ni return qiladi.
 
 function justFunction(letter, word, callback) {
@@ -15,6 +15,20 @@ justFunction("e", "engineer", (err, data) => {
   if (err) console.log("ERROR: ", err);
   console.log("javob:", data);
 });
+
+// PDP univ courses TASK:
+// 1 dan n gacha summani hisoblaydigan callback function tuzing.
+// function countN(n, callback) {
+//   if (n <= 0) callback("Musbat son kiriting!", null);
+//   else
+//     for (let i = 0; i <= n; i++) {
+//       callback(null, console.log(i));
+//     }
+// }
+// countN(20, (err, data) => {
+//   if (err) console.log("ERROR: ", err);
+//   console.log("javob:", data);
+// });
 
 // console.log("Jack Ma maslahatlari");
 // const list = [
