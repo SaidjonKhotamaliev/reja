@@ -1,20 +1,31 @@
+// B-TASK:
+
+// Shunday function tuzing, u 1ta string parametrga ega bolsin, hamda osha stringda qatnashgan raqamlarni sonini bizga return qilsin.
+// MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.
+
+function findNumber(a) {
+  let number = parseFloat(a);
+  //   let count = a.index;
+  console.log(typeof number, number);
+}
+findNumber("bustrinadsdanfj86jhasbfjh6");
 // A TASK:
 // Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
 // MASALAN countLetter("e", "engineer") 3ni return qiladi.
 
-function justFunction(letter, word, callback) {
-  if (typeof letter !== "string" && typeof word !== "string")
-    callback("insert a string!", null);
-  else if (word.includes(letter)) {
-    let javob = word.split(letter).length - 1;
-    callback(null, javob);
-  } else callback(null, 0);
-}
+// function justFunction(letter, word, callback) {
+//   if (typeof letter !== "string" && typeof word !== "string")
+//     callback("insert a string!", null);
+//   else if (word.includes(letter)) {
+//     let javob = word.split(letter).length - 1;
+//     callback(null, javob);
+//   } else callback(null, 0);
+// }
 
-justFunction("e", "engineer", (err, data) => {
-  if (err) console.log("ERROR: ", err);
-  console.log("javob:", data);
-});
+// justFunction("e", "engineer", (err, data) => {
+//   if (err) console.log("ERROR: ", err);
+//   console.log("javob:", data);
+// });
 
 // PDP univ courses TASK:
 // 1 dan n gacha summani hisoblaydigan callback function tuzing.
@@ -65,7 +76,7 @@ justFunction("e", "engineer", (err, data) => {
 // });
 // console.log("passed here 1");
 
-// async fujnction
+// async function
 
 // async function maslahatBering(a) {
 //   if (typeof a !== "number") throw new Error("insert a number");
