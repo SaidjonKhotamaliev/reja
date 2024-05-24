@@ -19,6 +19,7 @@
         <form action="/create-item" id="create-form" method="POST">
           <div class="d-flex align-items-center">
             <input
+              name="reja"
               type="text"
               id="create-field"
               autofocus
@@ -33,6 +34,33 @@
         </form>
       </div>
     </div>
+
+    <!-- <div class="container"></div>
+    <div class="container"><%= items[1].reja%></div> -->
+
+    <ul id="item-list" class="list-group pb-5">
+      <% items.map(function(item) { %>
+      <li
+        class="list-group-item list-group-item-info d-lfex align-items-center justify-content-between"
+      >
+        <span class="item-text"><%= item.reja%></span>
+        <div class="d-flex justify-content-end">
+          <button
+            data-id="<%=item._id%>"
+            class="edit-me btn btn-secondary btn-sm mr-1"
+          >
+            Ozgartirish
+          </button>
+          <button
+            data-id="<%=item._id%>"
+            class="btn btn-danger delete-me btn-sm"
+          >
+            Ochirish
+          </button>
+        </div>
+      </li>
+      <% }) %>
+    </ul>
     <button
       id="clean-all"
       class="btn btn-danger flex"

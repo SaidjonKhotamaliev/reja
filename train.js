@@ -4,11 +4,13 @@
 // MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.
 
 function findNumber(a) {
-  let number = parseFloat(a);
-  //   let count = a.index;
-  console.log(typeof number, number);
+  let count = 0;
+  for (let i = 0; i < a.length; i++) {
+    if (isFinite(a[i])) count++;
+  }
+  return count;
 }
-findNumber("bustrinadsdanfj86jhasbfjh6");
+console.log(findNumber("ad2a54y79wet0sfgb9"));
 // A TASK:
 // Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
 // MASALAN countLetter("e", "engineer") 3ni return qiladi.
