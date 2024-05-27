@@ -12,15 +12,16 @@ function itemTemplate(item) {
     </li>
     `;
 }
-let createField = document.querySelector("#create-field");
+let createField = document.getElementById("create-field");
 
-document.querySelector("#create-form").addEventListener("submit", (e) => {
+document.getElementById("create-form").addEventListener("submit", (e) => {
   e.preventDefault();
   axios
     .post("/create-item", { reja: createField.value })
     .then((response) => {
+      console.log(response.data);
       document
-        .querySelector("#item-list")
+        .getElementById("item-list")
         .insertAdjacentHTML("beforeend", itemTemplate(response.data));
       createField.value = "";
       createField.focus();
@@ -46,6 +47,38 @@ document.addEventListener("click", (e) => {
     }
   }
   // edit oper
-  if (e.target.classList.contains("edit-me"))
-    alert("Siz edit tugmasini bosdingiz!");
+  if (e.target.classList.contains("edit-me")) {
+    let userInput = prompt(
+      "O'zgarishni kiriting!",
+      e.target.parentElement.parentElement.querySelector(".item-text").innerHTML
+    );
+    if (userInput) {
+      axios
+        .post("/edit-item", {
+          id: e.target.getAttribute("data-id"),
+          new_input: userInput,
+        })
+        .then((response) => {
+          console.log(response.data);
+          e.target.parentElement.parentElement.querySelector(
+            ".item-text"
+          ).innerHTML = userInput;
+        })
+        .catch((err) => {
+          console.log("Something went wrong!");
+        });
+    }
+  }
+});
+
+document.getElementById("clean-all").addEventListener("click", () => {
+  axios
+    .post("/delete-all", { delete_all: true })
+    .then((response) => {
+      alert(response.data.state);
+      document.location.reload();
+    })
+    .catch((err) => {
+      console.log("xato:", err);
+    });
 });

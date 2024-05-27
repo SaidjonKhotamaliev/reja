@@ -38,15 +38,8 @@ app.post("/create-item", (req, res) => {
   console.log("user entered /create-item");
   const new_reja = req.body.reja;
   db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
-    // if (err) {
-    //   console.log(err);
-    //   res.end("Something went wrong");
-    // } else {
-    //   res.end("Succesfully added");
-    // }
     res.json(data.ops[0]);
   });
-  //   res.json({ test: "success" });
 });
 
 app.post("/delete-item", (req, res) => {
@@ -57,6 +50,25 @@ app.post("/delete-item", (req, res) => {
       res.json({ state: "success" });
     }
   );
+});
+app.post("/edit-item", (req, res) => {
+  const data = req.body;
+  console.log(data);
+  db.collection("plans").findOneAndUpdate(
+    { _id: new mongodb.ObjectId(data.id) },
+    { $set: { reja: data.new_input } },
+    (err, data) => {
+      res.json({ state: "success" });
+    }
+  );
+});
+
+app.post("/delete-all", (req, res) => {
+  if (req.body.delete_all) {
+    db.collection("plans").deleteMany(function () {
+      res.json({ state: "Hamma rejalar ochirildi" });
+    });
+  }
 });
 
 app.get("/author", (req, res) => {
@@ -69,7 +81,7 @@ app.get("/", function (req, res) {
     .find()
     .toArray((err, data) => {
       if (err) {
-        console.log(err);
+        console.log("err: ", err);
         res.end("something went wrong");
       } else {
         res.render("reja", { items: data });
