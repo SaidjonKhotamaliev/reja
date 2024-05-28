@@ -1,45 +1,36 @@
-// MITASK-C
+// D-TASK:
 
-// Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin, hamda classning 3ta methodi bolsin, biri qoldiq, biri sotish va biri qabul. Har bir method ishga tushgan vaqt ham log qilinsin.
-// MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud! shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!
-const moment = require("moment");
-moment().format("YYYY-MM-DD HH:mm:ss");
-class Shop {
-  constructor(apple, banana, mango) {
-    this.apple = apple;
-    this.banana = banana;
-    this.mango = mango;
+// Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
+// MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
+
+let a = "mitgroup";
+let b = "gmtiprou";
+let natija1 = 0;
+let natija2 = 0;
+function checkTwoString(a, b) {
+  for (let i = 0; i < a.length; i++) {
+    checkLoop(i);
+    function checkLoop(i) {
+      for (let j = 0; j < b.length; j++) {
+        if (b[j] === a[i]) {
+          natija1++;
+          break;
+        }
+      }
+    }
   }
 
-  qoldiq() {
-    moment().format("YY-MM-DD HH:mm:ss");
-    return console.log(
-      `hozir ${moment()}da ${this.apple}ta olma ${this.banana}ta banan va ${
-        this.mango
-      }ta mango mavjud!`
-    );
+  for (let i = 0; i < b.length; i++) {
+    checkLoop(i);
+    function checkLoop(i) {
+      for (let j = 0; j < a.length; j++) {
+        if (a[j] === b[i]) {
+          natija2++;
+          break;
+        }
+      }
+    }
   }
-  sotish(mahsulot, son) {
-    this[mahsulot] -= son;
-    moment().format("YYYY-MM-DD HH:mm:ss");
-
-    return console.log(`Hozir ${moment()} da ${son}ta ${mahsulot} sotildi!;
-    ${this.apple}ta olma ${this.banana}ta banan va ${
-      this.mango
-    }ta mango mavjud!`);
-  }
-  qabul(mahsulot, son) {
-    this[mahsulot] += son;
-    moment().format("YYYY-MM-DD HH:mm:ss");
-
-    return console.log(`Hozir ${moment()} da ${son}ta ${mahsulot} qabul qilindi!;
-      ${this.apple}ta olma ${this.banana}ta banan va ${
-      this.mango
-    }ta mango mavjud!`);
-  }
+  return natija2 === b.length && natija1 === a.length;
 }
-
-const shop = new Shop(4, 7, 10);
-shop.qoldiq();
-shop.sotish("mango", 7);
-shop.qabul("banana", 3);
+console.log(checkTwoString(a, b));
