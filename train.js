@@ -1,36 +1,63 @@
-// D-TASK:
+// E-TASK:
 
-// Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
-// MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
+// Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.
+// MASALAN: getReverse("hello") return qilsin "olleh"
 
-let a = "mitgroup";
-let b = "gmtiprou";
-let natija1 = 0;
-let natija2 = 0;
-function checkTwoString(a, b) {
-  for (let i = 0; i < a.length; i++) {
-    checkLoop(i);
-    function checkLoop(i) {
-      for (let j = 0; j < b.length; j++) {
-        if (b[j] === a[i]) {
-          natija1++;
-          break;
-        }
-      }
-    }
+function getReverse(string) {
+  let new_array = [];
+  for (let i = string.length - 1; i >= 0; i--) {
+    new_array.push(string[i]);
   }
-
-  for (let i = 0; i < b.length; i++) {
-    checkLoop(i);
-    function checkLoop(i) {
-      for (let j = 0; j < a.length; j++) {
-        if (a[j] === b[i]) {
-          natija2++;
-          break;
-        }
-      }
-    }
-  }
-  return natija2 === b.length && natija1 === a.length;
+  const new_string = new_array.join("");
+  return new_string;
 }
-console.log(checkTwoString(a, b));
+console.log(getReverse("hello"));
+
+// Explanation => Animal chanllenge
+const animal_list = [
+  "fox",
+  "ant",
+  "bird",
+  "lion",
+  "deer",
+  "wolf",
+  "bear",
+  "from",
+  "hen",
+  "mole",
+  "duck",
+  "dog",
+  "goat",
+  "bat",
+  "cock",
+  "cat",
+  "cow",
+];
+
+let natija = [];
+
+function findAnimals(txt, animal_list) {
+  for (let i = 0; i < animal_list.length; i++) {
+    let animal = animal_list[i];
+    let count = 0;
+
+    for (let j = 0; j < animal.length; j++) {
+      let animalLetter = animal[j];
+
+      for (let k = 0; k < txt.length; k++) {
+        if (animalLetter === txt[k]) {
+          count++;
+          break;
+        }
+      }
+    }
+
+    if (count == animal.length) {
+      natija.push(animal);
+    }
+  }
+  return natija;
+}
+
+const javob = findAnimals("dgota", animal_list);
+console.log("javob:", javob);
