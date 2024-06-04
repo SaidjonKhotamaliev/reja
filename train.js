@@ -1,23 +1,23 @@
-/*F-TASK: 
+//       G-TASK:
 
-Shunday findDoublers function tuzing, unga faqat bitta string argument pass bolib, agar stringda bir hil harf qatnashgan bolsa true, qatnashmasa false qaytarishi kerak.
-MASALAN: getReverse("hello") return true return qiladi
-*/
+// Shunday function tuzingki unga integerlardan iborat array pass bolsin va function bizga osha arrayning eng katta qiymatiga tegishli birinchi indexni qaytarsin.
+// MASALAN: getHighestIndex([5, 21, 12, 21, 8]) return qiladi 1 sonini.
 
-function getSameLetter(a) {
-  let natija = false;
-  for (let i = 0; i < a.length; i++) {
-    for (let j = i + 1; j < a.length; j++) {
-      if (a[i] === a[j]) {
-        natija = true;
-        break;
-      }
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 12, 32, 23, 52, 192, 64, 25];
+let highestNumber = Number.MIN_VALUE;
+function getHighestIndex(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    const element = arr[i];
+    if (highestNumber < element) {
+      highestNumber = element;
     }
   }
-  return natija;
+  let text = highestNumber.toString();
+  if (text.length > 1) {
+    return text[1];
+  } else return text[0];
 }
-
-console.log(getSameLetter("hello"));
+console.log(getHighestIndex(arr));
 
 // Explanation => Animal chanllenge
 // const animal_list = [
